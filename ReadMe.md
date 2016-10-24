@@ -19,7 +19,7 @@ getting the project functional. You don't have to worry about the ui, just ensur
 
 **Bonus points**
 
-1. Add a `.gitignore` file to your repo and ensure only files that need to be in the repo are there
+1. Add a `.gitignore` file to your repo and ensure only files that need to be in the repo are there (_No `.pyc` in the repo._)
 2. Applying **pep8** style guide in all the files you edit.
 3. Clear and useful commit messages.
 
