@@ -12,7 +12,8 @@ getting the project functional. You don't have to worry about the ui, just ensur
     1. You have a `requirements.txt` of the dependencies used by the project (_You are free to use any thirdparty libray you like to make life easy for you._)
     2. You have successfully organized the folder structure of the repo to match modern web development in **django**
     3. Starting up the project should successfully display a functional home page.(_Do no worry to much about the css but getting basic styling to work is a plus_)
-    4. When you are through, issuing a PR back to the main repo.
+    4. Write a unittest to ensure the home page renders correctly.
+    5. When you are through, issuing a PR back to the main repo.
 
 **Things to take not of when submitting your PR**
 1. Indicate your full name in the PR.
