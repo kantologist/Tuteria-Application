@@ -40,7 +40,7 @@
 
 {% block sub_page_sidebar_nav %}
     <ul>
-        <li class="on"><a href="{% url questionnaire_form form.questionnaire_obj.slug %}">Competition Details</a></li>
-        <li><a href="{% url questionnaire_rules form.questionnaire_obj.slug %}">Competition Rules</a></li>
+        <li class="on"><a href="{% url "questionnaire_form" form.questionnaire_obj.slug %}">Competition Details</a></li>
+        <li><a href="{% url "questionnaire_rules" form.questionnaire_obj.slug %}">Competition Rules</a></li>
     </ul>
 {% endblock %}

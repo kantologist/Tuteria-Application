@@ -4,7 +4,7 @@
 <div class="comment_notifications">
 	{% include 'unobase/includes/message_error_header.html' %}
 </div>
-<form id="comment_form" name="comment_form" id="comment_form" action="{% url comment_create form.object_content_type.id form.object.id %}" method="POST">
+<form id="comment_form" name="comment_form" id="comment_form" action="{% url "comment_create" form.object_content_type.id form.object.id %}" method="POST">
     {% csrf_token %}
     <div class="field">
     	{{ form.user }}{{ form.content_type }}{{ form.object_pk }}{{ form.submit_date }}{{ form.site }}{{ form.ip_address }}{{ form.is_public }}{{ form.in_reply_to }}

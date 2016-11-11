@@ -13,10 +13,28 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.conf import settings
+from django.conf.urls import patterns, include, url  # noqa
 from django.contrib import admin
 
-urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^', include('guinnessnigeria.urls')),
-]
+
+admin.autodiscover()
+
+urlpatterns = patterns(
+    '',
+    (r'^', include('guinnessnigeria.urls')),
+    (r'^admin/', include(admin.site.urls)),
+    (r'^pages/', include('django.contrib.flatpages.urls')),
+    (r'^secure/ckeditor/', include('ckeditor.urls')),
+    (r'^comments/', include('unobase.commenting.urls')),
+)
+
+if settings.DEBUG:
+    urlpatterns += patterns(
+        '',
+        (r'^media/(?P<path>.*)$',
+         'django.views.static.serve',
+         {'document_root': settings.MEDIA_ROOT,
+          'show_indexes': True}
+         ),
+    )

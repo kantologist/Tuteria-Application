@@ -25,7 +25,7 @@ SECRET_KEY = '*puarg51bj**p(pg$#6-c13p6zuvxr549!pebn4kq4$cy^h!@b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -58,32 +58,30 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'guinnessnigeria.middleware.NoCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'Guinness.urls'
 
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
-]
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
+    'preferences.context_processors.preferences_cp',
+)
 
 WSGI_APPLICATION = 'Guinness.wsgi.application'
 
@@ -139,10 +137,99 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 STATIC_URL = '/static/'
 
-# placeholder for unobase to work
-DEFAULT_IMAGE_CATEGORY_CHOICES = ()
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates'),
 
-# silence an error
-# SILENCED_SYSTEM_CHECKS = ["models.E005"]
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+)
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
+
+
+# CK Editor Settings
+CKEDITOR_UPLOAD_PATH = os.path.join(MEDIA_ROOT, 'uploads')
+CKEDITOR_STATIC_PREFIX = '/static/ckeditor/'
+
+
+# Registration Settings
+ACCOUNT_ACTIVATION_DAYS = 7
+AUTH_PROFILE_MODULE = 'guinnessnigeria.Profile'
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/secure/accounts/login/'
+AUTH_USER_MODEL = 'auth.User'
+
+
+# Unobase Settings
+DEFAULT_IMAGE_CATEGORY_CHOICES = ((0, '0'),)
+
+
+# Unobase API Settings
+API_REQUEST_TYPE_CHOICES = ((0, '0'),)
+
+# Country legal ages
+
+COUNTRY_LEGAL_AGES = {'Nigeria': 18}
+
+EMAIL_ENABLED = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = '10.0.105.10'  # infosys SMTP
+EMAIL_PORT = 25
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'webmaster@guinness-nigeria.com'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'console': {
+            'level': 'WARN',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'WARN',
+            'propagate': True,
+        },
+    }
+}
+
+# Guinness Nigeria Corporate Website settings.
+GUINNESS_NCW = {
+    'is_testing': False,  # while being developed and no local settings yet.
+    'email_recipients': {
+        'contact_form': ['cosec.gn@diageo.com', 'info.gn@diageo.com'],
+        'testing': ['guinness_nigeria_plc@praekelt.com', ],
+    }
+}
