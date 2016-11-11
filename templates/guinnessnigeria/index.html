@@ -1,4 +1,4 @@
- 
+
 {% extends 'base.html' %}
 {% load poll_widgets %}
 
@@ -22,11 +22,11 @@
 
     <div id="brands">
         <div class="container">
-            <h2>Our Brands<a href="{% url brand_list 'all' %}">View Our Brands Section &raquo;</a></h2>
+            <h2>Our Brands<a href="{% url "brand_list" 'all' %}">View Our Brands Section &raquo;</a></h2>
             <ul>
                 {% for brand in brands %}
                     <li>
-                        <a href="{% url brand_detail brand.slug %}"><img src="{{ brand.get_41x142_url }}" /><br />{{ brand.title }}</a>
+                        <a href="{% url "brand_detail" brand.slug %}"><img src="{{ brand.get_41x142_url }}" /><br />{{ brand.title }}</a>
                     </li>
                 {% empty %}
                     <li>Please add brands via the admin.</li>

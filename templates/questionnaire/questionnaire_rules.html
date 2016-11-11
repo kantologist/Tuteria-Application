@@ -25,7 +25,7 @@
 
 {% block sub_page_sidebar_nav %}
     <ul>
-        <li><a href="{% url questionnaire_form object.slug %}">Competition Details</a></li>
-        <li class="on"><a href="{% url questionnaire_rules object.slug %}">Competition Rules</a></li>
+        <li><a href="{% url "questionnaire_form" object.slug %}">Competition Details</a></li>
+        <li class="on"><a href="{% url "questionnaire_rules" object.slug %}">Competition Rules</a></li>
     </ul>
 {% endblock %}

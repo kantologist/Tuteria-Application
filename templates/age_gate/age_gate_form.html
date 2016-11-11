@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="row center">
-                    {{ form.terms_accept }} &nbsp; By entering this website you agree to Guinness Nigeria Plc's <a href="{% url terms_and_conditions %}">Terms and conditions</a> and <a href="{% url privacy_policy %}">Privacy &amp; Cookies</a> Notice
+                    {{ form.terms_accept }} &nbsp; By entering this website you agree to Guinness Nigeria Plc's <a href="{% url "terms_and_conditions" %}">Terms and conditions</a> and <a href="{% url "privacy_policy" %}">Privacy &amp; Cookies</a> Notice
                 	{{ form.terms_accept.errors }}
                 	{{ form.next }}
                 </div>

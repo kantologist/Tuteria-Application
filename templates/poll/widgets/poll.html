@@ -1,6 +1,6 @@
 {% if form %}
 	<div class="poll">
-	    <form id="frmPoll" action="{% url poll_answer %}" method="post">
+	    <form id="frmPoll" action="{% url "poll_answer" %}" method="post">
 	    	{% csrf_token %}
 	        <p class="question">{{ form.poll.question }}:</p>
 	        {{ form.answers }}
