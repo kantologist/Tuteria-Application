@@ -31,16 +31,30 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.comments',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'guinnessnigeria',
-    'unobase',
+    'django.contrib.flatpages',
+    'south',
+    'ckeditor',
     'photologue',
-    'sorted m2m'
+    'preferences',
+    'unobase',
+    'unobase.tagging',
+    'guinnessnigeria',
+    'guinnessnigeria.about',
+    'guinnessnigeria.brands',
+    'guinnessnigeria.careers',
+    'guinnessnigeria.investors',
+    'guinnessnigeria.news_and_media',
+    'guinnessnigeria.gn_foundation',
+    'unobase.poll',
+    'unobase.age_gate',
+    'django.contrib.admin',
 ]
 
 MIDDLEWARE = [
@@ -79,8 +93,12 @@ WSGI_APPLICATION = 'Guinness.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'Guinness',
+        'USER': 'postgres',
+        'PASSWORD': 'murphy',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -109,7 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Lagos'
 
 USE_I18N = True
 
@@ -122,3 +140,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# placeholder for unobase to work
+DEFAULT_IMAGE_CATEGORY_CHOICES = ()
+
+# silence an error
+# SILENCED_SYSTEM_CHECKS = ["models.E005"]

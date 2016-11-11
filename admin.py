@@ -50,7 +50,7 @@ admin.site.register(models.SocialMedia)
 from photologue import models as photologue_models  # noqa
 
 admin.site.unregister(photologue_models.Gallery)
-admin.site.unregister(photologue_models.GalleryUpload)
+# admin.site.unregister(photologue_models.GalleryUpload)
 admin.site.unregister(photologue_models.PhotoEffect)
 admin.site.unregister(photologue_models.Photo)
 admin.site.unregister(photologue_models.Watermark)
