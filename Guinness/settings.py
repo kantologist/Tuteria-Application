@@ -135,6 +135,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+SITE_ID = None
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
@@ -186,52 +187,3 @@ API_REQUEST_TYPE_CHOICES = ((0, '0'),)
 # Country legal ages
 
 COUNTRY_LEGAL_AGES = {'Nigeria': 18}
-
-EMAIL_ENABLED = True
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = '10.0.105.10'  # infosys SMTP
-EMAIL_PORT = 25
-EMAIL_USE_TLS = False
-DEFAULT_FROM_EMAIL = 'webmaster@guinness-nigeria.com'
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
-        }
-    },
-    'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        },
-        'console': {
-            'level': 'WARN',
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
-        'django.request': {
-            'handlers': ['console'],
-            'level': 'WARN',
-            'propagate': True,
-        },
-    }
-}
-
-# Guinness Nigeria Corporate Website settings.
-GUINNESS_NCW = {
-    'is_testing': False,  # while being developed and no local settings yet.
-    'email_recipients': {
-        'contact_form': ['cosec.gn@diageo.com', 'info.gn@diageo.com'],
-        'testing': ['guinness_nigeria_plc@praekelt.com', ],
-    }
-}
