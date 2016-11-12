@@ -1,2 +1,8 @@
-Django==1.7
+django==1.5
 unobase==0.3.3
+django-ckeditor==3.6.2.1
+django-photologue==2.7
+Pillow
+django-preferences
+South
+psycopg2==2.6
