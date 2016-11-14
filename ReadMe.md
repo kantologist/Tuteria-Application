@@ -4,7 +4,7 @@ This is my submission for the Tuteria Application. Thanks
 $ virtualenv env
 
 # activate it with
-$ source env/scripts/activate  # for windows
+$ env/scripts/activate  # for windows
 $ source env/bin/activate  # for linux os
 
 # install requirements from txt with
@@ -14,13 +14,10 @@ $ pip install -r requirements.txt
 # create database Guinness, which is the project name. 
 # or change Guinness/settings.py to use sqlite3 
 
-# to migrate database. run
+# to sync database. run
 $ python manage.py syncdb
 
 # migrate app with south
-$ python manage.py schemamigrations guinnessnigeria
-$ python manage.py migrate guinnessnigeria
-
 $ python manage.py migrate
 
 

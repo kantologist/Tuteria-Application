@@ -15,7 +15,7 @@
         <div class="body">
 		{% for object in object_list %}
 			<div class="listing pub">
-				<a href="{% url about_board_of_directors_detail object.slug %}">
+				<a href="{% url "about_board_of_directors_detail" object.slug %}">
 	                <img src="{{ object.get_118x118_url }}">
 	                <strong>{{ object.title }}</strong>
 	                <p>{{ object.position }}</p>

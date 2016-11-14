@@ -7,7 +7,7 @@
         </div>
         <div class="title">
             <h2>{% comment %}{{ brand_category_name }}{% endcomment %}</h2>
-            <a href="{% if object.category %}{% url brand_list slug %}{% else %}{% url brand_list 'all' %}{% endif %}" class="back_list"></a>
+            <a href="{% if object.category %}{% url "brand_list" slug %}{% else %}{% url "brand_list" 'all' %}{% endif %}" class="back_list"></a>
         </div>
         <div class="body brand">
 			<div class="brand_image"><img src="{{ object.get_127x474_url }}" /></div>
@@ -25,7 +25,7 @@
 				        <h4>Associated Brands</h4>
 				        <p>
 				        	{% for associated_brand in object.associated_brands.all %}
-				            	<a href="{% url brand_detail associated_brand.slug %}"><img src="{{ associated_brand.get_41x142_url }}" /></a>
+				            	<a href="{% url "brand_detail" associated_brand.slug %}"><img src="{{ associated_brand.get_41x142_url }}" /></a>
 				            {% endfor %}
 				        </p>
 				    </div>

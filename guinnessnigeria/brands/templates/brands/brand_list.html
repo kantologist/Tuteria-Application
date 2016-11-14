@@ -12,7 +12,7 @@
         <div class="body">
         	{% for object in object_list %}
 	            <div class="brand_item">
-	                <a href="{% url brand_detail object.slug %}">
+	                <a href="{% url "brand_detail" object.slug %}">
 	                    <div class="min_height"><img src="{{ object.get_73x326_url }}" /></div>
 	                    <h3>{{ object.title }}</h3>
 	                    <p>{{ object.description|safe }}</p>
